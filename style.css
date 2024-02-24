@@ -20,6 +20,9 @@ body {
     width: 400px;
     outline: inherit;
     height: 100px;
+    justify-content: right;
+    align-items: center;
+    font-size: 32px;
 }
 
 .buttons {
@@ -59,7 +62,7 @@ body {
 
 #equals {
     width: 160px;
-    height: 160px;
+   
     font-size: 32px;
 }
 
