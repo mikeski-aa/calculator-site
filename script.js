@@ -113,9 +113,8 @@ const result = document.querySelector('#equals');
             }
             };
             if (doOutput !== false)
-            {
-            display.textContent += ' = ' + storedSum;
-        }
+            {display.textContent += ' = ' + storedSum};
+            if (storedSum === Infinity) {alert('WHAT ARE YOU DOING YOU DOUGHNUT')}
         }
     });
     
