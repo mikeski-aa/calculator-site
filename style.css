@@ -3,33 +3,61 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: linear-gradient(to right top, #616469, #586a76, #46717e, #30797d, #247f73);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px;
 }
 
 .calculator {
     display: flex;
-    outline: 1px solid black;
+    
     width: 400px;
-    height: 420px;
     flex-direction: column;
     flex-wrap: wrap;
     
+    
 }
 
+.title {
+    outline: 0;
+    display: flex;
+    margin-bottom: 300px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    border: solid cyan 3px;
+    border-radius: 12px;
+    background-color: #5555559a;
+    font-weight: bolder;
+    color: white;
+   
+
+}
 .display {
     display: flex;
     width: 400px;
-    outline: inherit;
+    
     height: 100px;
     justify-content: right;
     align-items: center;
     font-size: 32px;
+    background-color: #d4d4d4;
+    outline: 5px solid black;
 }
-
+.specialbuttons {
+    display: flex;
+    outline: 5px solid black;
+    margin-top: -80px;
+    margin-left: 160px;
+    width: 240px;
+}
 .buttons {
     display:flex;
     width: inherit;
     height: 320px;
     outline: inherit;
+    outline: 5px solid black;
+    
 }
 
 .numbers, .operators {
@@ -38,25 +66,29 @@ body {
     height: inherit;
     flex-wrap: wrap;
     
+    
 }
 .numbers {
     width: 240px;
     flex-direction: row-reverse;
+    background-color: #139AEC;
   
 }
 .operators {
     width: 160px;
     align-content: flex-start;
+    background-color: #ECD213;
  
 }
 
 .numbers > *, .operators > * {
     display:flex;
-    outline: inherit;
+    
     width: 80px;
     height: 80px;
     justify-content: center;
     align-items: center;
+    outline: 1px solid black;
    
 }
 
@@ -65,7 +97,43 @@ body {
    
     font-size: 32px;
 }
-
+#clear {
+    background-color: #EC6513;
+}
 #zero {
-    width: 240px;
+    width: 160px;
+    margin-right: 80px;
+}
+
+#equals {
+    display: flex;
+    width: 80x;
+    height: 80px;
+    align-items: center;
+    outline: inherit;
+    justify-content: center;
+    background-color: #EC6513;
+    
+}
+
+#delete {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    outline: inherit;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #EC6513;
+   
+}
+
+#multiply {
+    display: flex;
+
+}
+
+#dot {
+    display: flex;
+
 }
