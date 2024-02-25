@@ -14,7 +14,7 @@ const signPl = '+';
 const signMin = '-';
 const signMul = '*';
 const signDiv = '/';
-let dontPrint = false;
+let doOutput = true;
 
 
 //display selected value
@@ -57,7 +57,7 @@ const result = document.querySelector('#equals');
         console.log('global arr', globArr);
         console.log(newArr);
 
-//check if only one variable was inputted
+//check if only one variable was input
         if (newArr.length === 0) {
             let tempSum = +arr.join('');
             alert(`operation error, you have only selected one value/item: ${tempSum}`);
@@ -91,10 +91,17 @@ const result = document.querySelector('#equals');
                     return;
                     } 
                 };
- //main operation of calculator - the calculation is done from left to right ignoring BIDMAS       
+ //main operation of calculator - the calculation is done from left to right ignoring BIDMAS 
+        doOutput=true;
         for (let i = 0; i < globArr.length; i++){
             if (i === 0) {
                     let p1 = arr.slice(i, globArr[i]);
+                    if (p1.filter(x => x === '.').length > 1) {
+                        alert('Invalid operation, please watch amount of decimal points being used');
+                        clearAllVars();
+                        doOutput = false;
+                        return;
+                    }
                         let tempSum = +p1.join('');
                         console.log(tempSum);
                         let sum = +tempSum;
@@ -105,42 +112,49 @@ const result = document.querySelector('#equals');
                         operation(i);
             }
             };
-            
+            if (doOutput !== false)
+            {
             display.textContent += ' = ' + storedSum;
+        }
         }
     });
     
 //operation function for calculating the result based on inputs selected by user
 function operation(i){
     let p2 = arr.slice(globArr[i]+1, globArr[i+1]);
-        console.log(p2);
-          p2 = +p2.join('');
-          
-          console.log(p2);
-          let sign = arr[globArr[i]]
-          getSign = sign;
-          console.log(getSign);
-  
-          switch (getSign) {
-            case ('+'):
-              storedSum += +p2;
-              console.log(storedSum);
-              break;
-            case ('-'):
-              storedSum -= +p2;
-              console.log(storedSum);
-              break;
-            case ('*'):
-              storedSum *= +p2;
-              console.log(storedSum);
-              break;
-            case ('/'):
-              storedSum /= +p2;
-              console.log(storedSum);
-              break;
-            
-          }
-  } 
+        if (p2.filter(x => x === '.').length > 1) {
+            alert('Invalid operation, please watch amount of decimal points being used');
+            clearAllVars();
+            doOutput = false;
+            return;
+        } else { 
+                console.log(p2);
+                p2 = +p2.join('');
+                
+                console.log(p2);
+                let sign = arr[globArr[i]]
+                getSign = sign;
+                console.log(getSign);
+
+                switch (getSign) {
+                case ('+'):
+                    storedSum += +p2;
+                    console.log(storedSum);
+                    break;
+                case ('-'):
+                    storedSum -= +p2;
+                    console.log(storedSum);
+                    break;
+                case ('*'):
+                    storedSum *= +p2;
+                    console.log(storedSum);
+                    break;
+                case ('/'):
+                    storedSum /= +p2;
+                    console.log(storedSum);
+                    break;
+                }
+        } }
 
 
         
@@ -172,18 +186,7 @@ operator.addEventListener('click', (event) => {
     switch (target) {
         case 'CLR':
             console.log('Clr pressed');
-            input = '';
-            operatorValue = '';
-            i = 0;
-            opResult = 0;
-            arr =[];
-            globArr = [];
-            storedSum = 0;
-            plus = [];
-            minus = [];
-            multiply = [];
-            divide = [];
-            display.textContent = '';
+            clearAllVars()
             break;
     }
 });
@@ -204,6 +207,7 @@ function clearAllVars() {
         display.textContent = '';    
 }
 
+//del button selector and delete last item
 
 const delLast = document.querySelector('#delete');
     delLast.addEventListener('click', e => {
